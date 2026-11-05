@@ -153,3 +153,4 @@ html.js .reveal.in-view { opacity: 1; transform: none;
   html.js .reveal { opacity: 1; transform: none; }
 }
 .site-header .brand { white-space: nowrap; }
+@media (max-width: 560px) { .site-nav a { font-size: 13px; padding: 12px 8px; } .site-header { gap: 8px; } }
