@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>NBA Picks 26-27 | Closest to reality takes the pot</title>
-  <meta name="description" content="Group predictions league for the 2026-27 NBA season: MVP, DPOY, All-NBA and All-Defensive picks, Finals calls, and a playoff bracket in April.">
+  <meta name="description" content="Group predictions league for the 2026-27 NBA season: every NBA award, All-NBA, All-Defensive and All-Rookie picks. Playoff bracket on its own site.">
   <meta property="og:title" content="NBA Picks 26-27">
   <meta property="og:description" content="Group predictions league for the 2026-27 NBA season. Most correct picks takes the pot.">
   <meta property="og:type" content="website">
@@ -30,7 +30,7 @@
   <section class="hero reveal">
     <p class="kicker">Group betting - 2026-27 NBA season</p>
     <h1>Closest to reality <span class="accent">takes the pot</span></h1>
-    <p class="support">Awards and Finals picks lock when the play-in tournament tips off in April 2027. The playoff bracket has its own site: <a href="https://miguelbiacora2000-gif.github.io/nba-bracket-27/">NBA Bracket 27</a>.</p>
+    <p class="support">Every NBA award, every All-NBA, All-Defensive and All-Rookie team. Picks lock when the play-in tournament tips off in April 2027. The playoff bracket has its own site: <a href="https://miguelbiacora2000-gif.github.io/nba-bracket-27/">NBA Bracket 27</a>.</p>
   </section>
 
   <section class="tab active" id="tab-pick" aria-label="Make your picks">
@@ -42,12 +42,37 @@
     </div>
 
     <div class="panel reveal">
-      <h2>Awards</h2>
+      <h2>The big awards</h2>
       <p class="sub">Regular-season awards, announced during the playoffs (Apr-Jun 2027).</p>
       <label class="field-label" for="f-mvp">MVP</label>
       <input class="pl" id="f-mvp" list="players" placeholder="Start typing a player..." autocomplete="off">
       <label class="field-label" for="f-dpoy">Defensive Player of the Year</label>
       <input class="pl" id="f-dpoy" list="players" placeholder="Start typing a player..." autocomplete="off">
+      <label class="field-label" for="f-roy">Rookie of the Year</label>
+      <input class="pl" id="f-roy" list="rookies" placeholder="Start typing a rookie..." autocomplete="off">
+      <label class="field-label" for="f-mip">Most Improved Player</label>
+      <input class="pl" id="f-mip" list="players" placeholder="Start typing a player..." autocomplete="off">
+      <label class="field-label" for="f-smoy">Sixth Man of the Year</label>
+      <input class="pl" id="f-smoy" list="players" placeholder="Start typing a player..." autocomplete="off">
+      <label class="field-label" for="f-clutch">Clutch Player of the Year</label>
+      <input class="pl" id="f-clutch" list="players" placeholder="Start typing a player..." autocomplete="off">
+      <label class="field-label" for="f-coty">Coach of the Year</label>
+      <input class="pl" id="f-coty" list="coaches" placeholder="Start typing a coach..." autocomplete="off">
+    </div>
+
+    <div class="panel reveal">
+      <h2>More NBA awards</h2>
+      <p class="sub">The rest of the official trophy list. Same deadline, smaller points.</p>
+      <label class="field-label" for="f-hustle">Hustle Award</label>
+      <input class="pl" id="f-hustle" list="players" placeholder="Start typing a player..." autocomplete="off">
+      <label class="field-label" for="f-sport">Sportsmanship Award</label>
+      <input class="pl" id="f-sport" list="players" placeholder="Start typing a player..." autocomplete="off">
+      <label class="field-label" for="f-team">Twyman-Stokes Teammate of the Year</label>
+      <input class="pl" id="f-team" list="players" placeholder="Start typing a player..." autocomplete="off">
+      <label class="field-label" for="f-sjc">Social Justice Champion</label>
+      <input class="pl" id="f-sjc" list="players" placeholder="Start typing a player..." autocomplete="off">
+      <label class="field-label" for="f-eoy">Executive of the Year</label>
+      <input class="pl" id="f-eoy" placeholder="Name or team, e.g. Sam Presti" autocomplete="off">
     </div>
 
     <div class="panel reveal">
@@ -66,18 +91,15 @@
     </div>
 
     <div class="panel reveal">
-      <h2>Finals</h2>
-      <p class="sub">Who makes the 2027 Finals and who wins it.</p>
-      <label class="field-label" for="f-east">Eastern Conference champion</label><select id="f-east"></select>
-      <label class="field-label" for="f-west">Western Conference champion</label><select id="f-west"></select>
-      <label class="field-label" for="f-champ">NBA champion</label><select id="f-champ"></select>
-      <label class="field-label" for="f-score">Finals series score</label>
-      <select id="f-score"><option value="">Pick...</option><option>4-0</option><option>4-1</option><option>4-2</option><option>4-3</option></select>
+      <h2>All-Rookie Teams</h2>
+      <p class="sub">5 rookies per team. A rookie can only appear once across both teams.</p>
+      <span class="field-label">First Team</span><div class="row5" id="f-rook1"></div>
+      <span class="field-label">Second Team</span><div class="row5" id="f-rook2"></div>
     </div>
 
     <div class="panel reveal locked-panel">
       <h2>Playoff bracket</h2>
-      <p class="locked">The series-by-series bracket lives on its own site and unlocks in mid-April 2027, right after the play-in sets the seeding. <a href="https://miguelbiacora2000-gif.github.io/nba-bracket-27/">Open the bracket site</a>.</p>
+      <p class="locked">Series picks and Finals calls live on the bracket site, which unlocks in mid-April 2027 right after the play-in sets the seeding. <a href="https://miguelbiacora2000-gif.github.io/nba-bracket-27/">Open the bracket site</a>.</p>
     </div>
 
     <button class="btn btn-cta" id="btn-copy" type="button">Copy my picks</button>
@@ -93,10 +115,10 @@
     <div class="panel reveal in-view">
       <h2>How it works</h2>
       <ol class="rules">
-        <li><strong>Enter before the deadline.</strong> Award and Finals picks lock when the 2027 play-in tournament tips off (mid-April 2027). The playoff bracket opens right after and locks before Game 1 of the first round.</li>
+        <li><strong>Enter before the deadline.</strong> Award picks lock when the 2027 play-in tournament tips off (mid-April 2027). The playoff bracket on its own site opens right after and locks before Game 1 of the first round.</li>
         <li><strong>Submit in the group chat.</strong> This site cannot store entries itself. Fill the form, copy the text, paste it to Miguel. He adds it to the leaderboard.</li>
-        <li><strong>Scoring is automatic.</strong> Once official results are in (awards during the playoffs, the Finals in June), the leaderboard scores itself.</li>
-        <li><strong>Winner takes the pot.</strong> Most points wins. Tiebreak: correct champion, then correct MVP, then earliest submission.</li>
+        <li><strong>Scoring is automatic.</strong> Once official results are in (awards are announced during the playoffs, All-NBA teams shortly after), the leaderboard scores itself.</li>
+        <li><strong>Winner takes the pot.</strong> Most points wins. Tiebreak: correct MVP, then correct DPOY, then earliest submission.</li>
       </ol>
     </div>
     <div class="panel reveal in-view">
@@ -105,13 +127,21 @@
         <tr><th>Pick</th><th>Points</th></tr>
         <tr><td>MVP</td><td>10 (5 if your pick finishes 2nd or 3rd)</td></tr>
         <tr><td>Defensive Player of the Year</td><td>8 (4 if 2nd or 3rd)</td></tr>
+        <tr><td>Rookie of the Year</td><td>8 (4 if 2nd or 3rd)</td></tr>
+        <tr><td>Most Improved Player</td><td>8 (4 if 2nd or 3rd)</td></tr>
+        <tr><td>Sixth Man of the Year</td><td>6 (3 if 2nd or 3rd)</td></tr>
+        <tr><td>Clutch Player of the Year</td><td>6 (3 if 2nd or 3rd)</td></tr>
+        <tr><td>Coach of the Year</td><td>6 (3 if 2nd or 3rd)</td></tr>
+        <tr><td>Hustle Award</td><td>4</td></tr>
+        <tr><td>Sportsmanship Award</td><td>4</td></tr>
+        <tr><td>Teammate of the Year</td><td>4</td></tr>
+        <tr><td>Social Justice Champion</td><td>4</td></tr>
+        <tr><td>Executive of the Year</td><td>4</td></tr>
         <tr><td>All-NBA, per player</td><td>3 in the exact team you called, 2 if on a different All-NBA team</td></tr>
         <tr><td>All-Defensive, per player</td><td>2 in the exact team, 1 if on the other team</td></tr>
-        <tr><td>Conference champion</td><td>10 each (East and West)</td></tr>
-        <tr><td>NBA champion</td><td>15</td></tr>
-        <tr><td>Exact Finals score</td><td>+5 (only if champion correct)</td></tr>
+        <tr><td>All-Rookie, per player</td><td>2 in the exact team, 1 if on the other team</td></tr>
       </table>
-      <p class="sub" style="margin-top:10px">Max from this phase: 123 pts. Playoff bracket points in April: 5 per 1st-round series, 8 per conference semi, 12 per conference final, 20 for the Finals series, +2 per exact series length.</p>
+      <p class="sub" style="margin-top:10px">Max from this site: 157 pts. Playoff bracket points in April, on the bracket site: 5 per 1st-round series, 8 per conference semi, 12 per conference final, 20 for the Finals series, +2 per exact series length.</p>
     </div>
   </section>
 </main>
@@ -119,6 +149,8 @@
   <p>NBA Picks 26-27 · One entry per person · Hosted on GitHub Pages</p>
 </footer>
 <datalist id="players"></datalist>
+<datalist id="rookies"></datalist>
+<datalist id="coaches"></datalist>
 <script src="picks.js"></script>
 <script src="results.js"></script>
 </body>
