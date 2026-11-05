@@ -9,7 +9,7 @@ GitHub Pages is static, so the site can't store picks itself. Each person fills 
 As official results are announced (All-Star selections in January; awards and teams during/after the 2027 playoffs), fill in `results.js`. The leaderboard scores automatically.
 
 ## Scoring
-See the Rules tab on the site. Maximum on this site: 179 points. The playoff bracket has separate scoring on its own site.
+See the Rules tab on the site. Maximum on this site: 100 points (63 on the six main awards, 37 on All-Star/All-NBA/All-Defensive/All-Rookie picks). The playoff bracket has separate scoring on its own site.
 
 ## Deadline
 All-Star picks lock when 2027 starters are announced (expected late January). Other awards and team picks lock at play-in tipoff in mid-April 2027.
