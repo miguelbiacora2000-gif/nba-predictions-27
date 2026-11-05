@@ -14,9 +14,7 @@ function collect(){
   return {
     name: v('f-name'),
     mvp: v('f-mvp'), dpoy: v('f-dpoy'), roy: v('f-roy'), mip: v('f-mip'),
-    smoy: v('f-smoy'), clutch: v('f-clutch'), coty: v('f-coty'),
-    hustle: v('f-hustle'), sportsmanship: v('f-sport'), teammate: v('f-team'),
-    socialJustice: v('f-sjc'), eoy: v('f-eoy'),
+    smoy: v('f-smoy'), coty: v('f-coty'),
     asEastStarters: vals('f-ase-s'), asEastReserves: vals('f-ase-r'),
     asWestStarters: vals('f-asw-s'), asWestReserves: vals('f-asw-r'),
     allNba1: vals('f-nba1'), allNba2: vals('f-nba2'), allNba3: vals('f-nba3'),
@@ -27,7 +25,7 @@ function collect(){
 }
 function validate(p){
   if(!p.name) return 'Add your name.';
-  for(const [k,label] of [['mvp','MVP'],['dpoy','Defensive Player of the Year'],['roy','Rookie of the Year'],['mip','Most Improved Player'],['smoy','Sixth Man of the Year'],['clutch','Clutch Player of the Year'],['coty','Coach of the Year'],['hustle','Hustle Award'],['sportsmanship','Sportsmanship Award'],['teammate','Teammate of the Year'],['socialJustice','Social Justice Champion'],['eoy','Executive of the Year']]) if(!p[k]) return 'Missing: ' + label;
+  for(const [k,label] of [['mvp','MVP'],['dpoy','Defensive Player of the Year'],['roy','Rookie of the Year'],['mip','Most Improved Player'],['smoy','Sixth Man of the Year'],['coty','Coach of the Year']]) if(!p[k]) return 'Missing: ' + label;
   const allstar = p.asEastStarters.concat(p.asEastReserves, p.asWestStarters, p.asWestReserves);
   if(allstar.some(x => !x)) return 'Fill all 24 All-Star slots (12 per conference).';
   if(new Set(allstar.map(x => x.toLowerCase())).size !== 24) return 'All-Star: each player can only appear once across both conferences.';
@@ -47,13 +45,7 @@ DPOY: ${p.dpoy}
 Rookie of the Year: ${p.roy}
 Most Improved: ${p.mip}
 Sixth Man: ${p.smoy}
-Clutch Player: ${p.clutch}
 Coach of the Year: ${p.coty}
-Hustle Award: ${p.hustle}
-Sportsmanship: ${p.sportsmanship}
-Teammate of the Year: ${p.teammate}
-Social Justice Champion: ${p.socialJustice}
-Executive of the Year: ${p.eoy}
 All-Star East starters: ${p.asEastStarters.join(', ')}
 All-Star East reserves: ${p.asEastReserves.join(', ')}
 All-Star West starters: ${p.asWestStarters.join(', ')}
@@ -98,13 +90,7 @@ function score(p, r){
   s = single(s, p.roy, r.roy, r.royTop3, 8, 4);
   s = single(s, p.mip, r.mip, r.mipTop3, 8, 4);
   s = single(s, p.smoy, r.smoy, r.smoyTop3, 6, 3);
-  s = single(s, p.clutch, r.clutch, r.clutchTop3, 6, 3);
   s = single(s, p.coty, r.coty, r.cotyTop3, 6, 3);
-  s = single(s, p.hustle, r.hustle, null, 4, 0);
-  s = single(s, p.sportsmanship, r.sportsmanship, null, 4, 0);
-  s = single(s, p.teammate, r.teammate, null, 4, 0);
-  s = single(s, p.socialJustice, r.socialJustice, null, 4, 0);
-  s = single(s, p.eoy, r.eoy, null, 4, 0);
   [['asEastStarters','asEastReserves'],['asWestStarters','asWestReserves']].forEach(([sk, rk]) => {
     (p[sk] || []).forEach(x => { if((r[sk] || []).includes(x)) s += 2; else if((r[rk] || []).includes(x)) s += 1; });
     (p[rk] || []).forEach(x => { if((r[rk] || []).includes(x)) s += 2; else if((r[sk] || []).includes(x)) s += 1; });
@@ -123,7 +109,7 @@ function score(p, r){
   });
   return s;
 }
-function hasResults(r){ return r && (r.mvp || r.dpoy || r.roy || r.mip || r.smoy || r.clutch || r.coty || r.hustle || (r.allNba1 || []).length || (r.asEastStarters || []).length); }
+function hasResults(r){ return r && (r.mvp || r.dpoy || r.roy || r.mip || r.smoy || r.coty || (r.allNba1 || []).length || (r.asEastStarters || []).length); }
 function renderBoard(){
   const b = document.getElementById('board'); if(!b) return;
   const picks = window.PICKS || [], r = window.RESULTS || {};
