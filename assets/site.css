@@ -152,3 +152,4 @@ html.js .reveal.in-view { opacity: 1; transform: none;
   *, *::before, *::after { animation: none !important; transition: none !important; }
   html.js .reveal { opacity: 1; transform: none; }
 }
+.site-header .brand { white-space: nowrap; }
