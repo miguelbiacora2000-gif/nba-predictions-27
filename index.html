@@ -1,114 +1,105 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NBA 26-27 Predictions League</title>
-<style>
-  :root { --bg:#0d1117; --card:#161b22; --line:#2d333b; --txt:#e6edf3; --dim:#8b949e; --orange:#f58426; --blue:#1d4ed8; }
-  * { box-sizing:border-box; margin:0; padding:0; }
-  body { font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; background:var(--bg); color:var(--txt); line-height:1.5; padding-bottom:60px; }
-  header { background:linear-gradient(135deg,#1a1f27,#0d1117); border-bottom:2px solid var(--orange); padding:28px 16px 20px; text-align:center; }
-  header h1 { font-size:1.6rem; } header h1 span { color:var(--orange); }
-  header p { color:var(--dim); font-size:.9rem; margin-top:6px; }
-  nav { display:flex; justify-content:center; gap:8px; margin:18px 16px 0; flex-wrap:wrap; }
-  nav button { background:var(--card); color:var(--dim); border:1px solid var(--line); border-radius:20px; padding:8px 18px; font-size:.9rem; cursor:pointer; }
-  nav button.active { background:var(--orange); color:#111; border-color:var(--orange); font-weight:600; }
-  main { max-width:760px; margin:0 auto; padding:20px 16px; }
-  .tab { display:none; } .tab.active { display:block; }
-  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px; margin-bottom:16px; }
-  .card h2 { font-size:1.1rem; color:var(--orange); margin-bottom:4px; }
-  .card .sub { color:var(--dim); font-size:.82rem; margin-bottom:12px; }
-  label { display:block; font-size:.85rem; color:var(--dim); margin:10px 0 4px; }
-  input, select { width:100%; background:#0d1117; color:var(--txt); border:1px solid var(--line); border-radius:8px; padding:10px 12px; font-size:.95rem; }
-  input:focus, select:focus { outline:none; border-color:var(--orange); }
-  .row5 { display:grid; grid-template-columns:1fr; gap:2px; }
-  .btn { display:inline-block; background:var(--orange); color:#111; border:none; border-radius:10px; padding:13px 22px; font-size:1rem; font-weight:700; cursor:pointer; width:100%; margin-top:8px; }
-  .btn.secondary { background:transparent; color:var(--orange); border:1px solid var(--orange); }
-  .btn:disabled { opacity:.5; cursor:not-allowed; }
-  #msg { text-align:center; margin-top:10px; font-size:.9rem; min-height:22px; }
-  #msg.ok { color:#3fb950; } #msg.err { color:#f85149; }
-  table { width:100%; border-collapse:collapse; font-size:.88rem; }
-  th, td { padding:9px 8px; border-bottom:1px solid var(--line); text-align:left; }
-  th { color:var(--dim); font-weight:600; font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; }
-  .picks-detail { font-size:.8rem; color:var(--dim); }
-  .pill { display:inline-block; background:#21262d; border-radius:12px; padding:2px 10px; margin:2px 2px; font-size:.78rem; }
-  .pill.hit { background:#14532d; color:#86efac; } .pill.close { background:#713f12; color:#fde047; }
-  ol.rules { padding-left:20px; } ol.rules li { margin-bottom:10px; font-size:.92rem; }
-  ol.rules b { color:var(--orange); }
-  .note { background:#1c2128; border-left:3px solid var(--orange); padding:12px 14px; border-radius:0 8px 8px 0; font-size:.88rem; color:var(--dim); margin-bottom:16px; }
-  .locked { text-align:center; padding:30px 10px; color:var(--dim); }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NBA Picks 26-27 | Closest to reality takes the pot</title>
+  <meta name="description" content="Group predictions league for the 2026-27 NBA season: MVP, DPOY, All-NBA and All-Defensive picks, Finals calls, and a playoff bracket in April.">
+  <meta property="og:title" content="NBA Picks 26-27">
+  <meta property="og:description" content="Group predictions league for the 2026-27 NBA season. Most correct picks takes the pot.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=Manrope:wght@400;600&display=swap">
+  <link rel="stylesheet" href="assets/site.css">
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.siteReady)document.documentElement.classList.remove('js')},2500)</script>
+  <script src="assets/site.js" defer></script>
 </head>
 <body>
-<header>
-  <h1>🏀 NBA 2026-27 <span>Predictions League</span></h1>
-  <p>Awards + Finals picks now, playoff bracket in April. Closest to reality takes the pot.</p>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <a class="brand" href="index.html">NBA Picks <span>26-27</span></a>
+  <nav class="site-nav" aria-label="Sections">
+    <a href="#tab-pick" data-tab="pick" aria-current="page">Picks</a>
+    <a href="#tab-board" data-tab="board">Leaderboard</a>
+    <a href="#tab-rules" data-tab="rules">Rules</a>
+  </nav>
 </header>
-<nav>
-  <button class="active" data-tab="pick">Make your picks</button>
-  <button data-tab="board">Leaderboard</button>
-  <button data-tab="rules">Rules & scoring</button>
-</nav>
-<main>
-  <div class="tab active" id="tab-pick">
-    <div class="note">Fill this in, hit <b>Copy my picks</b>, and paste the text into the group chat (or send it to Miguel). Your entry is only counted once Miguel adds it to the leaderboard. One entry per person; resend any time before the deadline to change picks.</div>
-    <div class="card">
-      <label>Your name</label>
-      <input id="f-name" placeholder="e.g. Gio" maxlength="30">
+<main id="main">
+  <section class="hero reveal">
+    <p class="kicker">Group betting - 2026-27 NBA season</p>
+    <h1>Closest to reality <span class="accent">takes the pot</span></h1>
+    <p class="support">Awards and Finals picks lock when the play-in tournament tips off in April 2027. The playoff bracket opens right after.</p>
+  </section>
+
+  <section class="tab active" id="tab-pick" aria-label="Make your picks">
+    <div class="note reveal">Fill this in, hit <strong>Copy my picks</strong> and paste the text into the group chat (or send it to Miguel). Your entry counts once Miguel adds it to the leaderboard. One entry per person; resend any time before the deadline to change picks.</div>
+
+    <div class="panel reveal">
+      <label class="field-label" for="f-name">Your name</label>
+      <input id="f-name" placeholder="e.g. Gio" maxlength="30" autocomplete="off">
     </div>
-    <div class="card">
+
+    <div class="panel reveal">
       <h2>Awards</h2>
-      <div class="sub">Regular-season awards, announced during the playoffs (Apr-Jun 2027).</div>
-      <label>MVP</label><input class="pl" id="f-mvp" list="players" placeholder="Start typing a player...">
-      <label>Defensive Player of the Year</label><input class="pl" id="f-dpoy" list="players" placeholder="Start typing a player...">
+      <p class="sub">Regular-season awards, announced during the playoffs (Apr-Jun 2027).</p>
+      <label class="field-label" for="f-mvp">MVP</label>
+      <input class="pl" id="f-mvp" list="players" placeholder="Start typing a player..." autocomplete="off">
+      <label class="field-label" for="f-dpoy">Defensive Player of the Year</label>
+      <input class="pl" id="f-dpoy" list="players" placeholder="Start typing a player..." autocomplete="off">
     </div>
-    <div class="card">
+
+    <div class="panel reveal">
       <h2>All-NBA Teams</h2>
-      <div class="sub">5 players per team. A player can only appear once across all three teams.</div>
-      <label>First Team</label><div class="row5" id="f-nba1"></div>
-      <label>Second Team</label><div class="row5" id="f-nba2"></div>
-      <label>Third Team</label><div class="row5" id="f-nba3"></div>
+      <p class="sub">5 players per team. A player can only appear once across all three teams.</p>
+      <span class="field-label">First Team</span><div class="row5" id="f-nba1"></div>
+      <span class="field-label">Second Team</span><div class="row5" id="f-nba2"></div>
+      <span class="field-label">Third Team</span><div class="row5" id="f-nba3"></div>
     </div>
-    <div class="card">
+
+    <div class="panel reveal">
       <h2>All-Defensive Teams</h2>
-      <div class="sub">5 players per team. A player can only appear once across both teams.</div>
-      <label>First Team</label><div class="row5" id="f-def1"></div>
-      <label>Second Team</label><div class="row5" id="f-def2"></div>
+      <p class="sub">5 players per team. A player can only appear once across both teams.</p>
+      <span class="field-label">First Team</span><div class="row5" id="f-def1"></div>
+      <span class="field-label">Second Team</span><div class="row5" id="f-def2"></div>
     </div>
-    <div class="card">
+
+    <div class="panel reveal">
       <h2>Finals</h2>
-      <div class="sub">Who makes the 2027 Finals and who wins it.</div>
-      <label>Eastern Conference champion</label><select id="f-east"></select>
-      <label>Western Conference champion</label><select id="f-west"></select>
-      <label>NBA champion</label><select id="f-champ"></select>
-      <label>Finals series score</label>
+      <p class="sub">Who makes the 2027 Finals and who wins it.</p>
+      <label class="field-label" for="f-east">Eastern Conference champion</label><select id="f-east"></select>
+      <label class="field-label" for="f-west">Western Conference champion</label><select id="f-west"></select>
+      <label class="field-label" for="f-champ">NBA champion</label><select id="f-champ"></select>
+      <label class="field-label" for="f-score">Finals series score</label>
       <select id="f-score"><option value="">Pick...</option><option>4-0</option><option>4-1</option><option>4-2</option><option>4-3</option></select>
     </div>
-    <div class="card">
+
+    <div class="panel reveal locked-panel">
       <h2>Playoff bracket</h2>
-      <div class="locked">🔒 The full series-by-series bracket unlocks in mid-April 2027, right after the play-in tournament sets the seeding. Check back here then.</div>
+      <p class="locked">The full series-by-series bracket unlocks in mid-April 2027, right after the play-in tournament sets the seeding. Check back here then.</p>
     </div>
-    <button class="btn" id="btn-copy">📋 Copy my picks</button>
-    <button class="btn secondary" id="btn-json">Copy as JSON (admin use)</button>
-    <div id="msg"></div>
-  </div>
 
-  <div class="tab" id="tab-board">
+    <button class="btn btn-cta" id="btn-copy" type="button">Copy my picks</button>
+    <button class="btn btn-ghost" id="btn-json" type="button">Copy as JSON (admin use)</button>
+    <p id="msg" role="status" aria-live="polite"></p>
+  </section>
+
+  <section class="tab" id="tab-board" aria-label="Leaderboard">
     <div id="board"></div>
-  </div>
+  </section>
 
-  <div class="tab" id="tab-rules">
-    <div class="card">
+  <section class="tab" id="tab-rules" aria-label="Rules and scoring">
+    <div class="panel reveal in-view">
       <h2>How it works</h2>
       <ol class="rules">
-        <li><b>Enter before the deadline.</b> Award + Finals picks lock when the 2027 play-in tournament tips off (mid-April 2027). The playoff bracket opens right after, and locks before Game 1 of the first round.</li>
-        <li><b>Submit via the group chat.</b> This site can't store entries itself. Fill the form, copy the text, paste it to Miguel. He adds it to the leaderboard.</li>
-        <li><b>Scoring is automatic.</b> Once official results are in (awards are announced during the playoffs; the Finals end in June), the leaderboard scores itself.</li>
-        <li><b>Winner takes the pot.</b> Most points wins. Tiebreak: correct champion, then correct MVP, then earliest submission.</li>
+        <li><strong>Enter before the deadline.</strong> Award and Finals picks lock when the 2027 play-in tournament tips off (mid-April 2027). The playoff bracket opens right after and locks before Game 1 of the first round.</li>
+        <li><strong>Submit in the group chat.</strong> This site cannot store entries itself. Fill the form, copy the text, paste it to Miguel. He adds it to the leaderboard.</li>
+        <li><strong>Scoring is automatic.</strong> Once official results are in (awards during the playoffs, the Finals in June), the leaderboard scores itself.</li>
+        <li><strong>Winner takes the pot.</strong> Most points wins. Tiebreak: correct champion, then correct MVP, then earliest submission.</li>
       </ol>
     </div>
-    <div class="card">
+    <div class="panel reveal in-view">
       <h2>Scoring</h2>
       <table>
         <tr><th>Pick</th><th>Points</th></tr>
@@ -116,112 +107,19 @@
         <tr><td>Defensive Player of the Year</td><td>8 (4 if 2nd or 3rd)</td></tr>
         <tr><td>All-NBA, per player</td><td>3 in the exact team you called, 2 if on a different All-NBA team</td></tr>
         <tr><td>All-Defensive, per player</td><td>2 in the exact team, 1 if on the other team</td></tr>
-        <tr><td>Conference champion</td><td>10 each (East + West)</td></tr>
+        <tr><td>Conference champion</td><td>10 each (East and West)</td></tr>
         <tr><td>NBA champion</td><td>15</td></tr>
         <tr><td>Exact Finals score</td><td>+5 (only if champion correct)</td></tr>
       </table>
-      <div class="sub" style="margin-top:10px">Max from this phase: 123 pts. Playoff bracket points (April): 5 per 1st-round series, 8 per conference semi, 12 per conference final, 20 for the Finals series, +2 per exact series length.</div>
+      <p class="sub" style="margin-top:10px">Max from this phase: 123 pts. Playoff bracket points in April: 5 per 1st-round series, 8 per conference semi, 12 per conference final, 20 for the Finals series, +2 per exact series length.</p>
     </div>
-  </div>
+  </section>
 </main>
+<footer class="site-footer">
+  <p>NBA Picks 26-27 · One entry per person · Hosted on GitHub Pages</p>
+</footer>
 <datalist id="players"></datalist>
-<script>
-const PLAYERS = ["Luka Doncic","Victor Wembanyama","Shai Gilgeous-Alexander","Nikola Jokic","Giannis Antetokounmpo","Jayson Tatum","Anthony Edwards","Jalen Brunson","Cade Cunningham","Donovan Mitchell","Jalen Williams","Kevin Durant","LeBron James","Stephen Curry","Anthony Davis","Joel Embiid","Tyrese Haliburton","Paolo Banchero","Franz Wagner","Evan Mobley","Amen Thompson","Ausar Thompson","Alperen Sengun","Jalen Johnson","Trae Young","LaMelo Ball","Devin Booker","De'Aaron Fox","Tyrese Maxey","Jaylen Brown","Kawhi Leonard","James Harden","Kyrie Irving","Damian Lillard","Karl-Anthony Towns","Domantas Sabonis","Rudy Gobert","Jaren Jackson Jr.","Chet Holmgren","Draymond Green","Dyson Daniels","Bam Adebayo","Scottie Barnes","Brandon Ingram","Zion Williamson","Ja Morant","Lauri Markkanen","Dejounte Murray","Derrick White","Jrue Holiday","Kristaps Porzingis","Aaron Gordon","Jamal Murray","Michael Porter Jr.","Austin Reaves","Darius Garland","Jarrett Allen","Pascal Siakam","OG Anunoby","Mikal Bridges","Josh Hart","Alex Caruso","Luguentz Dort","Trey Murphy III","Cooper Flagg","Dylan Harper"];
-const EAST = ["Atlanta Hawks","Boston Celtics","Brooklyn Nets","Charlotte Hornets","Chicago Bulls","Cleveland Cavaliers","Detroit Pistons","Indiana Pacers","Miami Heat","Milwaukee Bucks","New York Knicks","Orlando Magic","Philadelphia 76ers","Toronto Raptors","Washington Wizards"];
-const WEST = ["Dallas Mavericks","Denver Nuggets","Golden State Warriors","Houston Rockets","LA Clippers","Los Angeles Lakers","Memphis Grizzlies","Minnesota Timberwolves","New Orleans Pelicans","Oklahoma City Thunder","Phoenix Suns","Portland Trail Blazers","Sacramento Kings","San Antonio Spurs","Utah Jazz"];
-
-const dl = document.getElementById('players');
-PLAYERS.forEach(p => { const o=document.createElement('option'); o.value=p; dl.appendChild(o); });
-function buildRow(id){ const d=document.getElementById(id); for(let i=0;i<5;i++){ const inp=document.createElement('input'); inp.className='pl'; inp.setAttribute('list','players'); inp.placeholder='Player '+(i+1); d.appendChild(inp);} }
-['f-nba1','f-nba2','f-nba3','f-def1','f-def2'].forEach(buildRow);
-function fillTeams(id,teams){ const s=document.getElementById(id); s.innerHTML='<option value="">Pick...</option>'+teams.map(t=>`<option>${t}</option>`).join(''); }
-fillTeams('f-east',EAST); fillTeams('f-west',WEST); fillTeams('f-champ',EAST.concat(WEST));
-
-function vals(id){ return Array.from(document.getElementById(id).querySelectorAll('input')).map(i=>i.value.trim()); }
-function collect(){
-  const p = {
-    name: document.getElementById('f-name').value.trim(),
-    mvp: document.getElementById('f-mvp').value.trim(),
-    dpoy: document.getElementById('f-dpoy').value.trim(),
-    allNba1: vals('f-nba1'), allNba2: vals('f-nba2'), allNba3: vals('f-nba3'),
-    allDef1: vals('f-def1'), allDef2: vals('f-def2'),
-    east: document.getElementById('f-east').value, west: document.getElementById('f-west').value,
-    champion: document.getElementById('f-champ').value, finalsScore: document.getElementById('f-score').value,
-    submitted: new Date().toISOString().slice(0,10)
-  };
-  return p;
-}
-function validate(p){
-  if(!p.name) return 'Add your name.';
-  for(const [k,label] of [['mvp','MVP'],['dpoy','DPOY'],['east','East champion'],['west','West champion'],['champion','NBA champion'],['finalsScore','Finals score']]) if(!p[k]) return 'Missing: '+label;
-  const nba = p.allNba1.concat(p.allNba2,p.allNba3), def = p.allDef1.concat(p.allDef2);
-  if(nba.some(x=>!x)) return 'Fill all 15 All-NBA slots.';
-  if(def.some(x=>!x)) return 'Fill all 10 All-Defensive slots.';
-  if(new Set(nba.map(x=>x.toLowerCase())).size !== 15) return 'All-NBA: each player can only appear once across the three teams.';
-  if(new Set(def.map(x=>x.toLowerCase())).size !== 10) return 'All-Defensive: each player can only appear once across both teams.';
-  if(p.champion !== p.east && p.champion !== p.west) return 'The NBA champion must be one of your two conference champions.';
-  return null;
-}
-function fmt(p){
-  return `🏀 NBA 26-27 Picks - ${p.name}\nMVP: ${p.mvp}\nDPOY: ${p.dpoy}\nAll-NBA 1st: ${p.allNba1.join(', ')}\nAll-NBA 2nd: ${p.allNba2.join(', ')}\nAll-NBA 3rd: ${p.allNba3.join(', ')}\nAll-Def 1st: ${p.allDef1.join(', ')}\nAll-Def 2nd: ${p.allDef2.join(', ')}\nFinals: ${p.east} vs ${p.west}\nChampion: ${p.champion} (${p.finalsScore})`;
-}
-function flash(t,ok){ const m=document.getElementById('msg'); m.textContent=t; m.className=ok?'ok':'err'; }
-function doCopy(text){
-  if(navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(text);
-  const ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); return Promise.resolve();
-}
-document.getElementById('btn-copy').onclick = () => {
-  const p=collect(); const err=validate(p); if(err) return flash(err,false);
-  doCopy(fmt(p)).then(()=>flash('Copied! Now paste it in the group chat and send it to Miguel.',true)).catch(()=>flash('Copy failed - long-press and select the text instead.',false));
-};
-document.getElementById('btn-json').onclick = () => {
-  const p=collect(); const err=validate(p); if(err) return flash(err,false);
-  doCopy(JSON.stringify(p)).then(()=>flash('JSON copied (for the admin file).',true)).catch(()=>flash('Copy failed.',false));
-};
-
-/* Leaderboard */
-function score(p,r){
-  let s=0; const det={};
-  if(r.mvp){ if(p.mvp===r.mvp) s+=10; else if((r.mvpTop3||[]).includes(p.mvp)) s+=5; }
-  if(r.dpoy){ if(p.dpoy===r.dpoy) s+=8; else if((r.dpoyTop3||[]).includes(p.dpoy)) s+=4; }
-  [['allNba1',3,2],['allNba2',3,2],['allNba3',3,2]].forEach(([k,exact,any])=>{
-    const all = (r.allNba1||[]).concat(r.allNba2||[],r.allNba3||[]);
-    (p[k]||[]).forEach(x=>{ if((r[k]||[]).includes(x)) s+=exact; else if(all.includes(x)) s+=any; });
-  });
-  [['allDef1',2,1],['allDef2',2,1]].forEach(([k,exact,any])=>{
-    const all = (r.allDef1||[]).concat(r.allDef2||[]);
-    (p[k]||[]).forEach(x=>{ if((r[k]||[]).includes(x)) s+=exact; else if(all.includes(x)) s+=any; });
-  });
-  if(r.east && p.east===r.east) s+=10;
-  if(r.west && p.west===r.west) s+=10;
-  if(r.champion && p.champion===r.champion){ s+=15; if(r.finalsScore && p.finalsScore===r.finalsScore) s+=5; }
-  det.max=123; return s;
-}
-function hasResults(r){ return r && (r.mvp || r.dpoy || r.east || r.champion || (r.allNba1||[]).length); }
-function renderBoard(){
-  const b=document.getElementById('board');
-  const picks = window.PICKS||[], r = window.RESULTS||{};
-  if(!picks.length){ b.innerHTML='<div class="card"><div class="locked">No entries yet. Be the first - make your picks and send them to Miguel.</div></div>'; return; }
-  const scored = hasResults(r);
-  let rows = picks.map(p=>({p, s: score(p,r)})).sort((a,b)=>b.s-a.s);
-  let html = '<div class="card"><h2>Leaderboard</h2><div class="sub">'+(scored?'Scored against official results so far.':'Results not in yet - standings go live as results are announced (Apr-Jun 2027).')+'</div><table><tr><th>#</th><th>Name</th><th>Pts</th><th>Picks</th></tr>';
-  rows.forEach((x,i)=>{
-    html += `<tr><td>${i+1}</td><td><b>${x.p.name}</b><br><span class="picks-detail">in ${x.p.submitted||'-'}</span></td><td>${scored?x.s:'-'}</td>
-      <td class="picks-detail">MVP: ${x.p.mvp}<br>DPOY: ${x.p.dpoy}<br>Champ: ${x.p.champion} (${x.p.finalsScore||'?'})</td></tr>`;
-  });
-  html += '</table></div>';
-  b.innerHTML = html;
-}
-renderBoard();
-
-document.querySelectorAll('nav button').forEach(btn=>{
-  btn.onclick=()=>{ document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active')); btn.classList.add('active');
-    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active')); document.getElementById('tab-'+btn.dataset.tab).classList.add('active');
-    if(btn.dataset.tab==='board') renderBoard(); };
-});
-</script>
 <script src="picks.js"></script>
 <script src="results.js"></script>
-<script>renderBoard();</script>
 </body>
 </html>
