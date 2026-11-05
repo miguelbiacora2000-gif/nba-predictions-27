@@ -1,15 +1,15 @@
 # NBA 2026-27 Predictions League
 
-Group betting site for end-of-season NBA awards (MVP, DPOY, All-NBA, All-Defensive) and the 2027 Finals, with a playoff-bracket phase opening in April 2027.
+Group picks for the 2026-27 NBA season: MVP, Defensive Player of the Year, Rookie of the Year, Most Improved Player, Sixth Man of the Year, Coach of the Year, All-Star teams, All-NBA, All-Defensive and All-Rookie teams. Playoff series picks live on the separate bracket site.
 
 ## How entries work
-GitHub Pages is static, so the site can't store picks itself. Each person fills the form, taps **Copy my picks**, and pastes the text to the group chat / to Miguel. To add an entry, edit `picks.js` (the site also has a **Copy as JSON** button that produces the exact object to paste into the array).
+GitHub Pages is static, so the site can't store picks itself. Each person fills the form, taps **Copy my picks**, and pastes the text to the group chat / to Miguel. To add an entry, edit `picks.js` using the exact object from **Copy as JSON**.
 
 ## Updating results
-As official results come in (awards during the 2027 playoffs, Finals in June), fill in `results.js`. The leaderboard rescores automatically.
+As official results are announced (All-Star selections in January; awards and teams during/after the 2027 playoffs), fill in `results.js`. The leaderboard scores automatically.
 
 ## Scoring
-See the Rules tab on the site. Max 123 pts in the pre-playoff phase; bracket phase adds more in April.
+See the Rules tab on the site. Maximum on this site: 179 points. The playoff bracket has separate scoring on its own site.
 
 ## Deadline
-Award + Finals picks lock at play-in tipoff (mid-April 2027). Bracket picks lock before Game 1 of the first round.
+All-Star picks lock when 2027 starters are announced (expected late January). Other awards and team picks lock at play-in tipoff in mid-April 2027.
