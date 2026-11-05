@@ -85,27 +85,26 @@ function single(s, pick, winner, top3, pts, half){
 }
 function score(p, r){
   let s = 0;
-  s = single(s, p.mvp, r.mvp, r.mvpTop3, 10, 5);
-  s = single(s, p.dpoy, r.dpoy, r.dpoyTop3, 8, 4);
-  s = single(s, p.roy, r.roy, r.royTop3, 8, 4);
-  s = single(s, p.mip, r.mip, r.mipTop3, 8, 4);
+  s = single(s, p.mvp, r.mvp, r.mvpTop3, 15, 7);
+  s = single(s, p.dpoy, r.dpoy, r.dpoyTop3, 12, 6);
+  s = single(s, p.roy, r.roy, r.royTop3, 12, 6);
+  s = single(s, p.mip, r.mip, r.mipTop3, 12, 6);
   s = single(s, p.smoy, r.smoy, r.smoyTop3, 6, 3);
   s = single(s, p.coty, r.coty, r.cotyTop3, 6, 3);
+  // All-Star: 0.5 per player who makes a roster (either bucket counts; injury replacements are added to the results lists)
   [['asEastStarters','asEastReserves'],['asWestStarters','asWestReserves']].forEach(([sk, rk]) => {
-    (p[sk] || []).forEach(x => { if((r[sk] || []).includes(x)) s += 2; else if((r[rk] || []).includes(x)) s += 1; });
-    (p[rk] || []).forEach(x => { if((r[rk] || []).includes(x)) s += 2; else if((r[sk] || []).includes(x)) s += 1; });
+    const all = (r[sk] || []).concat(r[rk] || []);
+    (p[sk] || []).concat(p[rk] || []).forEach(x => { if(all.includes(x)) s += 0.5; });
   });
-  [['allNba1',3,2],['allNba2',3,2],['allNba3',3,2]].forEach(([k, exact, any]) => {
+  // All-NBA: 1 per player in the exact team you called, 0.5 if on a different All-NBA team
+  ['allNba1','allNba2','allNba3'].forEach(k => {
     const all = (r.allNba1 || []).concat(r.allNba2 || [], r.allNba3 || []);
-    (p[k] || []).forEach(x => { if((r[k] || []).includes(x)) s += exact; else if(all.includes(x)) s += any; });
+    (p[k] || []).forEach(x => { if((r[k] || []).includes(x)) s += 1; else if(all.includes(x)) s += 0.5; });
   });
-  [['allDef1',2,1],['allDef2',2,1]].forEach(([k, exact, any]) => {
-    const all = (r.allDef1 || []).concat(r.allDef2 || []);
-    (p[k] || []).forEach(x => { if((r[k] || []).includes(x)) s += exact; else if(all.includes(x)) s += any; });
-  });
-  [['allRookie1',2,1],['allRookie2',2,1]].forEach(([k, exact, any]) => {
-    const all = (r.allRookie1 || []).concat(r.allRookie2 || []);
-    (p[k] || []).forEach(x => { if((r[k] || []).includes(x)) s += exact; else if(all.includes(x)) s += any; });
+  // All-Defensive / All-Rookie: 0.5 per player on either team
+  [['allDef1','allDef2'],['allRookie1','allRookie2']].forEach(([a, b]) => {
+    const all = (r[a] || []).concat(r[b] || []);
+    (p[a] || []).concat(p[b] || []).forEach(x => { if(all.includes(x)) s += 0.5; });
   });
   return s;
 }
